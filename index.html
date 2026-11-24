@@ -191,6 +191,9 @@ footer{border-top:1px solid var(--line); padding:20px 0 40px; color:var(--muted)
 .topnav a[aria-current="page"]{background:var(--work); color:#fff}
 :root[data-theme="dark"] .topnav a[aria-current="page"]{color:#0F1626}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .topnav a[aria-current="page"]{color:#0F1626} }
+#pesquisa-view{display:none}
+body.vp #pesquisa-view{display:block}
+body.vp > header.hero, body.vp > #atualizacoes, body.vp > section.controls, body.vp > main, body.vp > footer{display:none}
 body.vs > header.hero, body.vs > #atualizacoes, body.vs > section.controls, body.vs > main, body.vs > footer{display:none}
 #simulador-view{display:none}
 #apresentacao-view{display:none}
@@ -290,8 +293,46 @@ body.vs #simulador-view{display:block}
 .verdict{background:var(--surface); border:1px solid var(--line); border-left:6px solid var(--work); border-radius:14px; padding:20px 22px; margin:0 0 18px; max-width:900px}
 .verdict p{margin:0 0 8px}
 .verdict p:last-child{margin:0}
+/* PESQUISA */
+.pq-head{padding:48px 0 28px; border-bottom:1px solid var(--line)}
 .pq-eyebrow{font-weight:800; color:var(--work); margin:0 0 8px}
-@media (max-width:900px){ .ugrid{grid-template-columns:1fr} }
+.pq-head h1{font-size:clamp(2rem,4.8vw,3.8rem); line-height:1; font-weight:850; font-variation-settings:'wdth' 118; letter-spacing:-.02em; margin:0 0 14px; max-width:20ch}
+.pq-head p{color:var(--muted); margin:0; max-width:70ch}
+.pq-find{display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin:28px 0 8px; border-top:1px solid var(--line)}
+.pq-find div{padding:18px 18px 18px 0; border-bottom:1px solid var(--line)}
+.pq-find b{display:block; font-size:clamp(2rem,4vw,2.8rem); font-weight:850; font-variation-settings:'wdth' 75; line-height:1; font-variant-numeric:tabular-nums}
+.pq-find b.w{color:var(--warn)}
+.pq-find span{font-size:.93rem; display:block; margin-top:6px; max-width:34ch}
+.pq-sec{padding:36px 0 4px}
+.pq-sec > h2{font-size:1.6rem; font-weight:850; font-variation-settings:'wdth' 112; margin:0 0 4px}
+.pq-sec > p.lead3{color:var(--muted); margin:0 0 18px; max-width:72ch}
+.pq-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+.pq-card{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px 20px}
+.pq-card h3{margin:0 0 4px; font-size:1rem; font-weight:800}
+.pq-card .take{margin:0 0 14px; font-size:.88rem; color:var(--muted)}
+.bar{display:grid; grid-template-columns:minmax(120px,42%) 1fr 74px; gap:10px; align-items:center; font-size:.88rem; margin:7px 0}
+.bar .tr{background:var(--bg); border-radius:4px; height:16px; overflow:hidden}
+.bar .fl{height:100%; background:var(--work); border-radius:4px}
+.bar .fl.w{background:var(--warn)}
+.bar .fl.m{background:var(--brk)}
+.bar .v{text-align:right; font-variant-numeric:tabular-nums; font-weight:700; white-space:nowrap}
+.bar .v small{color:var(--muted); font-weight:600}
+.pq-quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px}
+.pq-quotes blockquote{margin:0; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; font-size:.93rem}
+.pq-quotes cite{display:block; margin-top:8px; font-style:normal; font-size:.8rem; color:var(--muted)}
+.heat td.h{font-weight:700}
+.pq-tools{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:0 0 12px}
+.pq-tools input{font:inherit; padding:8px 12px; border-radius:999px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); min-width:220px}
+.flag{display:inline-block; font-size:.74rem; font-weight:700; padding:2px 8px; border-radius:999px; background:var(--bg); border:1px solid var(--line); margin:2px 4px 2px 0}
+.lvlp{font-weight:800}
+.lvlp.c{color:var(--warn)} .lvlp.a{color:var(--comp)} .lvlp.m{color:var(--cct)} .lvlp.b{color:var(--ok)}
+.pq-plan{counter-reset:p; list-style:none; margin:0; padding:0; display:grid; gap:12px}
+.pq-plan li{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px 16px 58px; position:relative; font-size:.95rem}
+.pq-plan li::before{counter-increment:p; content:counter(p); position:absolute; left:16px; top:14px; width:28px; height:28px; border-radius:50%; background:var(--work); color:var(--surface); display:grid; place-items:center; font-weight:800}
+.pq-plan b{display:block; margin-bottom:2px}
+.pq-foot{padding:28px 0 48px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); margin-top:36px}
+@media (max-width:900px){ .ugrid{grid-template-columns:1fr} .pq-grid{grid-template-columns:1fr} .pq-find{grid-template-columns:1fr 1fr} .pq-quotes{grid-template-columns:1fr} }
+@media (max-width:520px){ .pq-find{grid-template-columns:1fr} .bar{grid-template-columns:1fr 64px} .bar .tr{grid-column:1 / -1; order:3} }
 
 .sm-hint{font-size:.8rem; color:var(--muted); margin:2px 0 0}
 .sm-detail{margin-top:22px}
@@ -384,6 +425,7 @@ body.vs #simulador-view{display:block}
   <div class="wrap">
     <strong>Fim da escala 6x1</strong>
     <a href="#jornada-42" id="navMat" aria-current="page">Material técnico</a>
+    <a href="#pesquisa" id="navPq">Pesquisa com clientes</a>
     <a href="#simulador" id="navSim">Simulador de escalas</a>
     <a href="#apresentacao" id="navAp">Apresentação</a>
   </div>
@@ -645,7 +687,7 @@ body.vs #simulador-view{display:block}
     <header class="ap-head">
       <p class="pq-eyebrow">Apresentação para clientes</p>
       <h1 id="ap-t">Fim da escala 6x1: o que muda e como se preparar</h1>
-      <p>21 slides com a base legal, exemplos de escalas por segmento e os próximos passos. Use as setas do teclado para avançar e o botão de tela cheia para projetar no Zoom.</p>
+      <p>21 slides com a base legal, exemplos de escalas por segmento, o resultado da pesquisa e os próximos passos. Use as setas do teclado para avançar e o botão de tela cheia para projetar no Zoom.</p>
     </header>
     <div class="ap-bar">
       <button type="button" class="ap-btn pri" id="apFull">Tela cheia</button>
@@ -658,6 +700,35 @@ body.vs #simulador-view{display:block}
     <div class="ap-thumbs" id="apThumbs"></div>
   </div>
 </section>
+<section id="pesquisa-view" aria-labelledby="pq-t">
+  <header class="pq-head"><div class="wrap">
+    <p class="pq-eyebrow">Pesquisa com clientes</p>
+    <h1 id="pq-t">Como 117 empresas estão se preparando para o fim da 6x1</h1>
+    <p id="pqMeta"></p>
+    <div class="pq-find" id="pqFind"></div>
+  </div></header>
+  <div class="wrap">
+    <section class="pq-sec"><h2>Perfil das empresas</h2><p class="lead3">Quem respondeu: maioria de pequenos negócios do comércio, abertos no sábado.</p><div class="pq-grid" id="pqPerfil"></div></section>
+    <section class="pq-sec"><h2>Escalas usadas hoje</h2><p class="lead3">A 6x1 com 44 horas é a regra, e quase metade trabalha aos domingos.</p><div class="pq-grid" id="pqEscalas"></div></section>
+    <section class="pq-sec"><h2>Prontidão para 16/12</h2><p class="lead3">A maioria sabe da mudança, mas ainda não começou a se adaptar.</p><div class="pq-grid" id="pqPront"></div></section>
+    <section class="pq-sec"><h2>Sindicato e convenção coletiva</h2><p class="lead3">O ponto mais frágil: poucas empresas falaram com o sindicato e a maioria não conhece a própria convenção.</p><div class="pq-grid" id="pqSind"></div></section>
+    <section class="pq-sec"><h2>Maiores dificuldades citadas</h2><p class="lead3">Respostas abertas sobre a negociação com o sindicato, agrupadas em temas.</p><div class="pq-grid" id="pqDif"></div><div class="pq-quotes" id="pqQuotes"></div></section>
+    <section class="pq-sec"><h2>Por setor e por porte</h2><p class="lead3">Mercados estão mais adiantados; comércio e bares e restaurantes concentram atraso e ponto frágil.</p>
+      <div class="xtable"><table class="heat"><thead><tr><th scope="col">Setor principal</th><th scope="col">Empresas</th><th scope="col">Usam 6x1</th><th scope="col">Adaptação iniciada</th><th scope="col">Falaram com o sindicato</th><th scope="col">Ponto em papel ou sem registro</th></tr></thead><tbody id="pqSetor"></tbody></table></div>
+      <div class="xtable" style="margin-top:14px"><table class="heat"><thead><tr><th scope="col">Empregados CLT</th><th scope="col">Empresas</th><th scope="col">Adaptação iniciada</th><th scope="col">Falaram com o sindicato</th></tr></thead><tbody id="pqPorte"></tbody></table></div>
+    </section>
+    <section class="pq-sec"><h2>Plano de ação recomendado</h2><p class="lead3">Prioridades para a contabilidade nas próximas semanas, a partir das respostas e da liminar do STF.</p><ol class="pq-plan" id="pqPlan"></ol></section>
+    <section class="pq-sec"><h2>Empresas por prioridade de atendimento</h2>
+      <p class="lead3">Pontuação de 0 a 9: usa 6x1 (2), adaptação não iniciada (2), quer variar folgas sem ter falado com o sindicato (2), ponto em papel ou sem registro (1), trabalha aos domingos (1), sistema não ajustado (1).</p>
+      <div class="pq-grid" id="pqPrioDist" style="margin-bottom:14px"></div>
+      <div class="pq-tools"><div class="chips" id="pqChips"></div><input type="search" id="pqSearch" placeholder="Buscar empresa ou setor" aria-label="Buscar empresa ou setor"></div>
+      <div class="xtable"><table><thead><tr><th scope="col">Empresa</th><th scope="col">Setor</th><th scope="col">Empregados</th><th scope="col">Prioridade</th><th scope="col">Alertas</th></tr></thead><tbody id="pqPrio"></tbody></table></div>
+      <p id="pqPrioCount" style="color:var(--muted); font-size:.88rem"></p>
+    </section>
+    <p class="pq-foot">Metodologia: 119 respostas recebidas pelo formulário entre 05/11 e 13/11/2026; 2 respostas de teste foram excluídas, restando 117 válidas. Percentuais calculados sobre 117. Perguntas de múltipla escolha (setor, dias, escalas) contam cada menção. As respostas abertas foram classificadas manualmente em oito temas. Lista de empresas para uso interno.</p>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     Base: Emenda Constitucional 141/2026; Decreto 13.173/2026; Portaria MTE 2.041/2026; STF, ADIs 8041 e 8042 (liminar de 12/11/2026); CLT, arts. 59, 59-A, 60, 66, 71, 227, 318, 320, 452-A e 611-A; NR-17, Anexo II; Lei 605/1949; Lei 5.889/1973; Lei 9.870/1999; Lei 9.956/2000; Lei 10.101/2000; Lei 13.021/2014; Lei Complementar 150/2015; Lei 13.103/2015; Lei 13.419/2017; STF, ADI 5322; Súmulas 146, 351 e 354 e OJ 394 do TST; STF, Tema 1.046; Portaria MTE 1.316/2026; STF, ADI 5994; PL 1.838/2026, em tramitação. Material informativo, atualizado em 27/10/2026. Não substitui orientação de advogado trabalhista.
@@ -1219,6 +1290,120 @@ body.vs #simulador-view{display:block}
     ['c-sal','c-he','c-ad','c-fer'].forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
     calc();
   })();
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+  var P = {"raw":119,"n":117,"periodo":["2026-11-05","2026-11-13"],"setor":[["Comércio",57],["Bares e Restaurantes",19],["Mercados",15],["Serviços",11],["Saúde e farmácias",10],["Indústria",8],["Transporte e logística",8],["Hotelaria",7],["Postos e Conveniências",1],["Escolas/Educação",1]],"empregados":[["1 a 5",19],["6 a 20",48],["21 a 50",19],["51 a 100",17],["101 a 500",10],["Mais de 500",4]],"dias":[["Segunda a Sexta",102],["Sábado",80],["Domingo",40],["Feriados",36],["24 horas",16]],"escalas":[["6x1",95],["5x2 com 44 horas",29],["5x2 com 40 horas ou menos",6],["12x36",8],["Turnos ininterruptos",3]],"pct6x1":[["Mais de 75%",80],["De 51% a 75%",8],["De 26% a 50%",3],["Até 25%",26]],"jornada":[["44 horas",112],["42 horas",2],["40 horas",2],["Menos de 40 horas",1]],"horistas":[["Sim, muitos",3],["Sim, poucos",17],["Não",97]],"domingos":[["Todo domingo, em revezamento",38],["Alguns domingos por mês",16],["Raramente",18],["Nunca",45]],"sabe":[["Sim, e já estamos nos preparando",46],["Sim, mas ainda não começamos",55],["Sabia vagamente",12],["Não sabia",4]],"estagio":[["Escalas novas já definidas",7],["Em elaboração",26],["Aguardando definições do sindicato ou do contador",54],["Aguardando regulamentação/lei complementar",10],["Não começamos",20]],"nsa":[["Sim",5],["Não",112]],"cct":[["Sim",33],["Não",17],["Não sei",67]],"manter6x1":[["Sim, é essencial para a operação",34],["Talvez, em períodos de pico",52],["Não",31]],"acima8h":[["Sim",54],["Não sei",40],["Não",23]],"sindicato":[["Sim, negociação em andamento",14],["Sim, apenas contato inicial",24],["Não",79]],"ponto":[["Ponto eletrônico",58],["Ponto mecânico",7],["Folha de ponto em papel",27],["Não registramos",25]],"sistema":[["Sim",4],["Em andamento",16],["Não",88],["Não sei",9]],"dif":[["A",28],["B",24],["C",16],["D",14],["E",5],["F",13],["G",15],["O",2]],"bysize":[["1 a 5",19,3,6],["6 a 20",48,10,9],["21 a 50",19,6,9],["51 a 100",17,7,5],["101 a 500",10,4,6],["Mais de 500",4,3,3]],"bysec":[["Comércio",46,38,10,17,33],["Bares e Restaurantes",19,18,6,3,8],["Mercados",15,15,10,11,1],["Saúde e farmácias",10,7,1,0,6],["Indústria",8,3,1,2,1],["Transporte e logística",8,6,3,3,1],["Hotelaria",6,5,1,1,1],["Serviços",4,2,1,1,1],["Postos e conveniências",1,1,0,0,0]],"prio":[["Agromir e Ademir","Comércio","1 a 5",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Trabalha aos domingos","Sistema não ajustado"]],["B E A ASSIS MERC","Comércio","1 a 5",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Trabalha aos domingos","Sistema não ajustado"]],["Cerealista firme forte","Comércio","1 a 5",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Trabalha aos domingos","Sistema não ajustado"]],["Dr. Agro","Comércio","51 a 100",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Trabalha aos domingos","Sistema não ajustado"]],["Drogaria Jóia Rara","Saúde e farmácias","6 a 20",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Trabalha aos domingos","Sistema não ajustado"]],["Manso e Santos sorveteria e H G Manso","Bares e Restaurantes","6 a 20",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Trabalha aos domingos","Sistema não ajustado"]],["Pastelão comércio de alimentos ltda","Bares e Restaurantes","6 a 20",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Trabalha aos domingos","Sistema não ajustado"]],["Ricardo C Ribas","Bares e Restaurantes","6 a 20",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Trabalha aos domingos","Sistema não ajustado"]],["Valéria Aparecida Almeida Assis ME","Comércio","1 a 5",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Trabalha aos domingos","Sistema não ajustado"]],["Vila Moderna Alimentos ltda","Comércio","6 a 20",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Trabalha aos domingos","Sistema não ajustado"]],["Vjc Del se ch mercearia ltda","Mercados","6 a 20",9,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Trabalha aos domingos","Sistema não ajustado"]],["A na pneus","Comércio","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Sistema não ajustado"]],["AJ landim junior mercearias","Mercados","51 a 100",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Brielina Restaurante e Lanchonete Ltda","Bares e Restaurantes","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["C&S Prestaçoes de Serviços LTDA","Comércio","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Sistema não ajustado"]],["Carlos Adriano Gonçalves da Rocha","Comércio","1 a 5",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Sistema não ajustado"]],["CERVEJARIA CASA DO FRITZ DE PENEDO LTDA","Bares e Restaurantes","21 a 50",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Drogaria Santa alice","Saúde e farmácias","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Sistema não ajustado"]],["Empresa de Ônibus e Turismo Pedro Antônio Ltda","Transporte e logística","51 a 100",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Grupo Hanna Palace Hotel","Hotelaria","51 a 100",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Hanna Palace Hotel","Hotelaria","21 a 50",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Hotel Santa Amalia","Hotelaria","21 a 50",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["LDF ENTRETENIMENTO LTDA","Bares e Restaurantes","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Sistema não ajustado"]],["LV elétrica","Indústria","1 a 5",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Sistema não ajustado"]],["Materiais de construção Dino ltda","Comércio","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Sistema não ajustado"]],["MERCADO JOREDALI ATACADISTA E VAREJISTA LTDA","Mercados","101 a 500",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Moreira e barros sorveteira e lanchonete ltda","Bares e Restaurantes","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Trabalha aos domingos"]],["Padaria e confeitaria Júlio Braga Ltda","Bares e Restaurantes","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Parque Hotel Santa Amália Ltda","Hotelaria","21 a 50",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Posto Combustível Malu","Postos e conveniências","21 a 50",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Sonho Meu","Comércio","1 a 5",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada","Sistema não ajustado"]],["Trem Azul Restaurante e Lanchonete LTDA","Bares e Restaurantes","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Willian Baptista de Souza epp","Bares e Restaurantes","6 a 20",8,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Sistema não ajustado"]],["ATENDO DISTRIBUIDORA","Transporte e logística","6 a 20",7,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Sistema não ajustado"]],["AUTO CENTER JP","Indústria","51 a 100",7,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Sistema não ajustado"]],["INSTITUTO MÉDICO SEROPEDICA S/S LTDA","Saúde e farmácias","21 a 50",7,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Sistema não ajustado"]],["Lanchonete e Cafeteria Gonçalves de Andrade","Bares e Restaurantes","6 a 20",7,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Não registra jornada"]],["LAR ODONTOLOGIA LTDA","Saúde e farmácias","6 a 20",7,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Sistema não ajustado"]],["Mn mix","Bares e Restaurantes","51 a 100",7,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Sistema não ajustado"]],["ORTHO FSA ODONTOLOGIA LTDA","Saúde e farmácias","6 a 20",7,["Usa 6x1","Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Sistema não ajustado"]],["Auto Posto Paty Ltda","Comércio","6 a 20",6,["Usa 6x1","Quer variar folgas sem contato com sindicato","Não registra jornada","Trabalha aos domingos"]],["BAR E RESTAURANTE H P LTDA","Bares e Restaurantes","51 a 100",6,["Usa 6x1","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Barra Luz","Comércio","21 a 50",6,["Usa 6x1","Adaptação não iniciada","Não registra jornada","Sistema não ajustado"]],["Cerealista Leal de Mendes","Mercados","101 a 500",6,["Usa 6x1","Adaptação não iniciada","Trabalha aos domingos","Sistema não ajustado"]],["Colégio Cândido Mendes Ltda","Comércio","51 a 100",6,["Usa 6x1","Adaptação não iniciada","Não registra jornada","Sistema não ajustado"]],["CTG Comercio Atacadista de produtos odontologicos","Saúde e farmácias","51 a 100",6,["Usa 6x1","Quer variar folgas sem contato com sindicato","Ponto em papel","Sistema não ajustado"]],["DIB2011 COMÉRCIO DE ALIMENTOS","Mercados","101 a 500",6,["Usa 6x1","Adaptação não iniciada","Trabalha aos domingos","Sistema não ajustado"]],["Elpidio e Filhos","Comércio","101 a 500",6,["Usa 6x1","Adaptação não iniciada","Trabalha aos domingos","Sistema não ajustado"]],["GTB Flats e Lince Construtora","Hotelaria","6 a 20",6,["Usa 6x1","Quer variar folgas sem contato com sindicato","Ponto em papel","Trabalha aos domingos"]],["Ind. Com. Laticinios Ibitira","Indústria","6 a 20",6,["Usa 6x1","Adaptação não iniciada","Trabalha aos domingos","Sistema não ajustado"]],["Irmãos Florentinos Cereais","Comércio","51 a 100",6,["Usa 6x1","Adaptação não iniciada","Trabalha aos domingos","Sistema não ajustado"]],["Jaleve materiais de construção","Comércio","6 a 20",6,["Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Ponto em papel","Sistema não ajustado"]],["Liv representações","Comércio","1 a 5",6,["Usa 6x1","Adaptação não iniciada","Não registra jornada","Sistema não ajustado"]],["Lusk 387 Confecções Ltda","Comércio","6 a 20",6,["Usa 6x1","Adaptação não iniciada","Ponto em papel","Sistema não ajustado"]],["MA CORREIA PEÇAS E ACESSORIOS","Comércio","6 a 20",6,["Usa 6x1","Adaptação não iniciada","Ponto em papel","Sistema não ajustado"]],["Moreira e Barros sorveteria e lanchonete","Bares e Restaurantes","6 a 20",6,["Usa 6x1","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["NADCOR COMERCIO","Comércio","6 a 20",6,["Usa 6x1","Adaptação não iniciada","Não registra jornada","Sistema não ajustado"]],["NADCOR TINTAS ALEGRIA","Comércio","1 a 5",6,["Usa 6x1","Adaptação não iniciada","Não registra jornada","Sistema não ajustado"]],["New Cargo Transporte e Logística Ltda","Transporte e logística","21 a 50",6,["Usa 6x1","Adaptação não iniciada","Trabalha aos domingos","Sistema não ajustado"]],["NTN Tintas","Comércio","6 a 20",6,["Usa 6x1","Adaptação não iniciada","Não registra jornada","Sistema não ajustado"]],["PADARIA JARDIM DE PATY","Comércio","21 a 50",6,["Usa 6x1","Adaptação não iniciada","Trabalha aos domingos","Sistema não ajustado"]],["Poderosa comércio de roupas LTDA","Comércio","1 a 5",6,["Usa 6x1","Adaptação não iniciada","Ponto em papel","Sistema não ajustado"]],["ROMA DIESEL","Comércio","6 a 20",6,["Usa 6x1","Adaptação não iniciada","Não registra jornada","Sistema não ajustado"]],["TRANSMARGOO TURISMO E FRETAMENTO","Transporte e logística","101 a 500",6,["Usa 6x1","Quer variar folgas sem contato com sindicato","Trabalha aos domingos","Sistema não ajustado"]],["Wines and Roses","Comércio","6 a 20",6,["Usa 6x1","Quer variar folgas sem contato com sindicato","Ponto em papel","Sistema não ajustado"]],["Zen","Bares e Restaurantes","51 a 100",6,["Usa 6x1","Adaptação não iniciada","Trabalha aos domingos","Sistema não ajustado"]],["Ana Alvesw Barbosa de Miranda Festas","Comércio","21 a 50",5,["Usa 6x1","Adaptação não iniciada","Sistema não ajustado"]],["Bebê Chiquinho de Barra do Piraí","Comércio","6 a 20",5,["Usa 6x1","Adaptação não iniciada","Sistema não ajustado"]],["Botelho e vieira armazem angra//Js Vieira","Comércio","51 a 100",5,["Usa 6x1","Quer variar folgas sem contato com sindicato","Trabalha aos domingos"]],["D & J Foods Ltda","Bares e Restaurantes","21 a 50",5,["Usa 6x1","Quer variar folgas sem contato com sindicato","Trabalha aos domingos"]],["ETS SERVIÇOS LOGISTICOS E COMERCIAIS LTDA","Transporte e logística","1 a 5",5,["Usa 6x1","Adaptação não iniciada","Ponto em papel"]],["INESFE - ESPECIALIZAÇÃO EM SAÚDE ESTÉTICA","Comércio","21 a 50",5,["Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Sistema não ajustado"]],["LEMOA COMERCIO DE ALIMENTOS LTDA","Comércio","21 a 50",5,["Usa 6x1","Adaptação não iniciada","Ponto em papel"]],["Milton C G Silva Roupas EPP","Comércio","6 a 20",5,["Usa 6x1","Adaptação não iniciada","Sistema não ajustado"]],["MRF SERVIÇOS ADMINISTRATIVOS","Serviços","6 a 20",5,["Usa 6x1","Adaptação não iniciada","Sistema não ajustado"]],["Odontologia de iraja","Saúde e farmácias","6 a 20",5,["Usa 6x1","Adaptação não iniciada","Sistema não ajustado"]],["Pena e Meneghitti transportes","Transporte e logística","51 a 100",5,["Usa 6x1","Quer variar folgas sem contato com sindicato","Sistema não ajustado"]],["Pneuscar Recauchutagem Ltda","Comércio","101 a 500",5,["Usa 6x1","Adaptação não iniciada","Sistema não ajustado"]],["RIO BEER ATACADO E VAREJO LTDA","Comércio","1 a 5",5,["Usa 6x1","Adaptação não iniciada","Ponto em papel"]],["Ti Neves auto peças","Comércio","6 a 20",5,["Usa 6x1","Adaptação não iniciada","Sistema não ajustado"]],["TORTERIA ADRIANA","Indústria","6 a 20",5,["Adaptação não iniciada","Quer variar folgas sem contato com sindicato","Sistema não ajustado"]],["Alegria com de prof Alim","Mercados","101 a 500",4,["Usa 6x1","Trabalha aos domingos","Sistema não ajustado"]],["APP MADEIRAS LTDA","Comércio","1 a 5",4,["Usa 6x1","Ponto em papel","Sistema não ajustado"]],["Botelho e Vieira","Mercados","51 a 100",4,["Usa 6x1","Trabalha aos domingos","Sistema não ajustado"]],["Cem Ideias Presentes","Comércio","6 a 20",4,["Usa 6x1","Quer variar folgas sem contato com sindicato"]],["Clínica e Cirurgia de Olhos Dr Paulo Siqueira Ltda","Saúde e farmácias","1 a 5",4,["Adaptação não iniciada","Não registra jornada","Sistema não ajustado"]],["CUNHA COMERCIO DE ALIMENTOS E UTILIDADES LTDA","Comércio","1 a 5",4,["Adaptação não iniciada","Não registra jornada","Sistema não ajustado"]],["Elpidio e Filhos Ltda","Mercados","51 a 100",4,["Usa 6x1","Trabalha aos domingos","Sistema não ajustado"]],["Fabio Oliveira Araujo ME","Comércio","6 a 20",4,["Usa 6x1","Não registra jornada","Sistema não ajustado"]],["JALEVE GALPÃO MATERIAIS DE CONSTRUÇÃO","Comércio","6 a 20",4,["Adaptação não iniciada","Ponto em papel","Sistema não ajustado"]],["L F Coelho Domingos","Comércio","6 a 20",4,["Usa 6x1","Não registra jornada","Trabalha aos domingos"]],["Mercado Joredali Atacadista e varejista","Mercados","101 a 500",4,["Usa 6x1","Trabalha aos domingos","Sistema não ajustado"]],["Motel Pereira e Martins 2004 Ltda","Hotelaria","6 a 20",4,["Adaptação não iniciada","Trabalha aos domingos","Sistema não ajustado"]],["MP Carvalho","Saúde e farmácias","1 a 5",4,["Adaptação não iniciada","Ponto em papel","Sistema não ajustado"]],["ORM CONSULTORIA E SERVICOS MÉDICOS","Saúde e farmácias","6 a 20",4,["Adaptação não iniciada","Ponto em papel","Sistema não ajustado"]],["Sal e doce Comércio de Alimentos","Bares e Restaurantes","21 a 50",4,["Usa 6x1","Trabalha aos domingos","Sistema não ajustado"]],["Wines And roses","Serviços","21 a 50",4,["Usa 6x1","Ponto em papel","Trabalha aos domingos"]],["31044474000169","Bares e Restaurantes","6 a 20",3,["Ponto em papel","Trabalha aos domingos","Sistema não ajustado"]],["A B RODRIGUES LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS","Transporte e logística","21 a 50",3,["Adaptação não iniciada","Sistema não ajustado"]],["AB RODRIGUES LOCAÇÕES DE MAQUINAS E EQUIPAMENTOS","Indústria","21 a 50",3,["Quer variar folgas sem contato com sindicato","Trabalha aos domingos"]],["Alfa Vet Comércio de Produtos Agropecuários Ltda.","Comércio","101 a 500",3,["Adaptação não iniciada","Sistema não ajustado"]],["CONSTRUTORA COEFER LTDA","Serviços","51 a 100",3,["Adaptação não iniciada","Sistema não ajustado"]],["DIB2011 COMERCIO DE ALIMENTOS LTDA","Mercados","Mais de 500",3,["Usa 6x1","Trabalha aos domingos"]],["Dib2020 comercio de alimentos ltda","Mercados","21 a 50",3,["Usa 6x1","Sistema não ajustado"]],["EISEN ROHR EQUIPAMENTOS LTDA.","Indústria","6 a 20",3,["Adaptação não iniciada","Sistema não ajustado"]],["Empório Petrópolis Comestiveis Ltda.","Mercados","101 a 500",3,["Usa 6x1","Trabalha aos domingos"]],["HS COUTINHO","Mercados","Mais de 500",3,["Usa 6x1","Trabalha aos domingos"]],["L E J FOODS LTDA","Bares e Restaurantes","6 a 20",3,["Usa 6x1","Trabalha aos domingos"]],["Landcraft Restauração de Veículos","Indústria","1 a 5",3,["Adaptação não iniciada","Sistema não ajustado"]],["MGF SUL CONSTRUTORA E SERVIÇOS LTDA","Serviços","Mais de 500",3,["Adaptação não iniciada","Sistema não ajustado"]],["Naomi Comercio de Alimentos Ltda","Mercados","Mais de 500",3,["Usa 6x1","Trabalha aos domingos"]],["Primho Paracambi Industria de Moveis Hopitalares Ltda","Indústria","6 a 20",3,["Adaptação não iniciada","Sistema não ajustado"]],["Boisse Brasil importação Ltda","Comércio","6 a 20",2,["Ponto em papel","Sistema não ajustado"]],["DIB2020 COMERCIO DE ALIMENTOS LTDA","Mercados","21 a 50",2,["Usa 6x1"]],["LANDCRAFT","Comércio","1 a 5",2,["Ponto em papel","Sistema não ajustado"]],["Hs Coutinho","Transporte e logística","51 a 100",1,["Sistema não ajustado"]],["Montenegro Marmoraria Ltda","Comércio","1 a 5",0,[]]],"X":{"use6":95,"needCCT":100,"needCCT_noSind":64,"use6_notStarted":68,"notStarted":84,"weakPonto":52,"sunday":54,"sunday_weak":17,"cct_naosei":67,"sist_ok":4,"nsa_sim":5,"small":67,"noRegister":25,"manter":86,"manter_noSind":55,"acima_noSind":30},"prioDist":[["Crítica",40],["Alta",41],["Média",31],["Baixa",5]]};
+  var N = P.n;
+  function pct(v){ return Math.round(v / N * 100) + '%'; }
+  function el(t, cls, txt){ var e = document.createElement(t); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+
+  /* ROUTING */
+  function route(){
+    var h = location.hash, pq = h === '#pesquisa', sm = h === '#simulador', ap = h === '#apresentacao';
+    document.body.classList.toggle('vp', pq);
+    document.body.classList.toggle('vs', sm);
+    document.body.classList.toggle('va', ap);
+    document.getElementById('navAp').setAttribute('aria-current', ap ? 'page' : 'false');
+    document.getElementById('navPq').setAttribute('aria-current', pq ? 'page' : 'false');
+    document.getElementById('navSim').setAttribute('aria-current', sm ? 'page' : 'false');
+    document.getElementById('navMat').setAttribute('aria-current', (pq || sm || ap) ? 'false' : 'page');
+    if (pq || sm || ap) window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  document.getElementById('pqMeta').textContent = 'Formulário respondido entre 05/11 e 13/11/2026. ' + P.raw + ' respostas recebidas; ' + (P.raw - N) + ' de teste excluídas; ' + N + ' empresas analisadas.';
+
+  var X = P.X;
+  var finds = [
+    [pct(X.use6), 'usam a escala 6x1 em parte ou em toda a equipe (' + X.use6 + ' empresas).', false],
+    [pct(X.notStarted), 'ainda não começaram a adaptação ou esperam sindicato, contador ou lei. Só 7 já definiram as escalas novas.', true],
+    [X.manter_noSind + ' de ' + X.manter, 'empresas que querem variar folgas entre semanas, o que exige acordo coletivo, não falaram com o sindicato.', true],
+    [pct(X.cct_naosei), 'não sabem se a convenção coletiva trata de escala, jornada ou domingos.', true],
+    [pct(X.weakPonto), 'registram a jornada em papel (27) ou não registram (25): sem prova das duas folgas.', true],
+    [X.sist_ok + ' de ' + N, 'empresas já ajustaram ponto e folha; só ' + X.nsa_sim + ' enviaram as escalas novas à contabilidade.', true]
+  ];
+  var fb = document.getElementById('pqFind');
+  finds.forEach(function(f){ var d = el('div'); var b = el('b', f[2] ? 'w' : '', f[0]); d.appendChild(b); d.appendChild(el('span', '', f[1])); fb.appendChild(d); });
+
+  function chart(host, title, take, rows, opts){
+    opts = opts || {};
+    var c = el('div', 'pq-card'); c.appendChild(el('h3', '', title)); c.appendChild(el('p', 'take', take));
+    var max = opts.base || N;
+    rows.forEach(function(r){
+      var row = el('div', 'bar');
+      row.appendChild(el('span', '', opts.labels && opts.labels[r[0]] ? opts.labels[r[0]] : r[0]));
+      var tr = el('div', 'tr'); var fl = el('div', 'fl' + (opts.warn && opts.warn.indexOf(r[0]) >= 0 ? ' w' : (opts.mute && opts.mute.indexOf(r[0]) >= 0 ? ' m' : '')));
+      fl.style.width = Math.max(1, r[1] / max * 100) + '%'; tr.appendChild(fl); row.appendChild(tr);
+      var v = el('span', 'v', r[1] + ' '); v.appendChild(el('small', '', '(' + Math.round(r[1] / N * 100) + '%)')); row.appendChild(v);
+      row.setAttribute('aria-label', r[0] + ': ' + r[1] + ' empresas'); c.appendChild(row);
+    });
+    document.getElementById(host).appendChild(c);
+  }
+  var SET = {'Postos e Conveniências':'Postos e conveniências','Escolas/Educação':'Escolas'};
+  chart('pqPerfil', 'Setor de atuação', 'Comércio aparece em quase metade das respostas. Uma empresa pode marcar mais de um setor.', P.setor, {labels:SET});
+  chart('pqPerfil', 'Empregados com carteira assinada', '57% têm até 20 empregados.', P.empregados);
+  chart('pqPerfil', 'Dias de funcionamento', 'Mais de dois terços abrem no sábado; um terço abre no domingo.', P.dias, {labels:{'24 horas':'24 horas/operação contínua'}});
+  chart('pqPerfil', 'Jornada semanal mais comum', 'Praticamente todas ainda contratam 44 horas.', P.jornada, {warn:['44 horas']});
+  chart('pqEscalas', 'Escalas usadas hoje', 'A 6x1 domina; 12x36 e turnos são minoria. Múltipla escolha.', P.escalas, {warn:['6x1']});
+  chart('pqEscalas', 'Parte da equipe em 6x1', 'Em 68% das empresas, mais de três quartos da equipe faz 6x1.', P.pct6x1, {warn:['Mais de 75%']});
+  chart('pqEscalas', 'Trabalho aos domingos', '46% trabalham aos domingos todo mês: atenção à folga dominical e aos feriados.', P.domingos, {warn:['Todo domingo, em revezamento']});
+  chart('pqEscalas', 'Horistas, diaristas ou intermitentes', '17% têm esse tipo de contrato: o valor-hora precisa ser recalculado.', P.horistas, {mute:['Não']});
+  chart('pqPront', 'Conhecimento do prazo de dezembro', 'Quase todos sabem, mas 47% ainda não começaram.', P.sabe, {warn:['Sim, mas ainda não começamos','Sabia vagamente','Não sabia']});
+  chart('pqPront', 'Estágio da adaptação das escalas', '46% esperam o sindicato ou o contador; só 6% têm escalas prontas.', P.estagio, {warn:['Aguardando definições do sindicato ou do contador','Não começamos','Aguardando regulamentação/lei complementar']});
+  chart('pqPront', 'Ponto e folha ajustados para 42h e 40h', '75% ainda não ajustaram os sistemas.', P.sistema, {warn:['Não','Não sei']});
+  chart('pqPront', 'Como a jornada é registrada', '21% não registram a jornada; 23% usam papel.', P.ponto, {warn:['Não registramos','Folha de ponto em papel']});
+  chart('pqSind', 'Contato com o sindicato', '68% não falaram com nenhum sindicato.', P.sindicato, {warn:['Não']});
+  chart('pqSind', 'A convenção trata de escala, jornada ou domingos?', '57% não sabem o que diz a própria convenção.', P.cct, {warn:['Não sei']});
+  chart('pqSind', 'Vai manter 6x1 em algumas semanas?', '74% podem precisar variar folgas: isso continua exigindo acordo coletivo.', P.manter6x1, {warn:['Sim, é essencial para a operação']});
+  chart('pqSind', 'Vai precisar de mais de 8h por dia na fase de 42h?', '46% sim: a liminar do STF libera até 8h24 sem acordo.', P.acima8h);
+  var DIF = {A:'Sindicato sem resposta ou aditivo pendente', B:'Sem contato ou sem sindicato definido', C:'Dúvidas sobre as regras ou espera por orientação', D:'Dificuldade operacional (sábado, revezamento, equipe pequena)', E:'Prazo curto e demora no retorno', F:'Nenhuma dificuldade', G:'Sem resposta clara', O:'Outros'};
+  var difSorted = P.dif.slice().sort(function(a, b){ return b[1] - a[1]; });
+  chart('pqDif', 'Principal dificuldade para negociar com o sindicato', 'Os dois maiores temas são o próprio sindicato sem resposta e a falta de contato.', difSorted, {labels:DIF, warn:['A','B'], mute:['F','G','O']});
+  var dd = el('div', 'pq-card'); dd.appendChild(el('h3', '', 'Leitura do especialista'));
+  ['Entre as respostas com conteúdo, mais da metade (52 de 89) não trata de regras: é falta de contato ou de resposta do sindicato. Muitos sindicatos ainda aguardam aditivos às convenções.', 'Pequenas empresas relatam não saber qual é o seu sindicato ou não ter convenção conhecida: a contabilidade é o canal de orientação.', 'As dificuldades operacionais concentram-se no sábado e no revezamento com equipe pequena: são casos para as grades de tempo parcial e folguista.'].forEach(function(t){ dd.appendChild(el('p', 'take', t)); });
+  document.getElementById('pqDif').appendChild(dd);
+  [['“Sindicato ainda não tem uma resposta sobre o assunto.”','Mercado, 101 a 500 empregados'],['“Até hoje não sei ao certo em qual sindicato devo negociar.”','Bar e restaurante'],['“Como temos poucos funcionários, o revezamento ficará muito difícil.”','Pequena empresa'],['“Será obrigatório fazer acordo com o sindicato para iniciar a mudança?”','Indústria, 6 a 20 empregados'],['“Eles estão com as mesmas dúvidas que a gente.”','Comércio'],['“Prazo curto para negociação.”','Empresa de serviços']].forEach(function(q){ var b = el('blockquote', '', q[0]); b.appendChild(el('cite', '', q[1])); document.getElementById('pqQuotes').appendChild(b); });
+
+  function pctCell(a, b){ var td = el('td', 'h', b ? Math.round(a / b * 100) + '%' : '—'); td.appendChild(el('small', '', ' (' + a + ')')); td.lastChild.style.color = 'var(--muted)'; return td; }
+  P.bysec.forEach(function(r){ var tr = el('tr'); var th = el('th', '', r[0]); th.scope = 'row'; tr.appendChild(th); tr.appendChild(el('td', '', String(r[1]))); tr.appendChild(pctCell(r[2], r[1])); tr.appendChild(pctCell(r[3], r[1])); tr.appendChild(pctCell(r[4], r[1])); tr.appendChild(pctCell(r[5], r[1])); document.getElementById('pqSetor').appendChild(tr); });
+  P.bysize.forEach(function(r){ var tr = el('tr'); var th = el('th', '', r[0]); th.scope = 'row'; tr.appendChild(th); tr.appendChild(el('td', '', String(r[1]))); tr.appendChild(pctCell(r[2], r[1])); tr.appendChild(pctCell(r[3], r[1])); document.getElementById('pqPorte').appendChild(tr); });
+
+  var crit = P.prioDist[0][1];
+  [['Atender primeiro as ' + crit + ' empresas de prioridade crítica', 'Contato individual até 30/11 com proposta de escala pronta, usando as grades deste material.'],
+   ['Recolher as escalas novas de todos os clientes', 'Só ' + X.nsa_sim + ' de ' + N + ' enviaram. Defina uma data-limite (por exemplo, 30/11) para parametrizar a folha até 15/12.'],
+   ['Comunicar a liminar do STF', X.acima_noSind + ' empresas que querem mais de 8h por dia nunca falaram com o sindicato: agora podem usar 8h24 sem acordo na transição, registrando por escrito.'],
+   ['Mapear sindicato e convenção de cada cliente', X.cct_naosei + ' empresas não sabem o que diz a convenção. Informe a cada uma qual é o seu sindicato e o que a convenção prevê sobre domingos, feriados e banco de horas.'],
+   ['Encaminhar a negociação das folgas variáveis', X.manter_noSind + ' empresas precisam variar folgas entre semanas e ainda não procuraram o sindicato. Oriente o contato ou acompanhe o aditivo do sindicato patronal.'],
+   ['Regularizar o controle de ponto', X.noRegister + ' empresas não registram a jornada. O registro é obrigatório acima de 20 empregados (art. 74 da CLT) e é a melhor prova das duas folgas e dos feriados para qualquer porte.'],
+   ['Oferecer modelos para pequenas empresas', X.small + ' empresas têm até 20 empregados. Pacote simples: grade com folguista, tempo parcial de fim de semana e regra dos feriados.']
+  ].forEach(function(a){ var li = el('li'); li.appendChild(el('b', '', a[0])); li.appendChild(document.createTextNode(a[1])); document.getElementById('pqPlan').appendChild(li); });
+
+  chart('pqPrioDist', 'Distribuição por prioridade', 'Pontuação crítica de 7 a 9, alta de 5 a 6, média de 3 a 4, baixa de 0 a 2.', P.prioDist, {warn:['Crítica'], mute:['Baixa']});
+  var LV = function(s){ return s >= 7 ? ['Crítica','c'] : s >= 5 ? ['Alta','a'] : s >= 3 ? ['Média','m'] : ['Baixa','b']; };
+  var pf = {lvl:'', q:''};
+  var chips = document.getElementById('pqChips');
+  ['Todas','Crítica','Alta','Média','Baixa'].forEach(function(k, i){ var b = el('button', 'chip', k); b.type = 'button'; b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'); b.addEventListener('click', function(){ pf.lvl = i === 0 ? '' : k; chips.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); renderP(); }); chips.appendChild(b); });
+  document.getElementById('pqSearch').addEventListener('input', function(e){ pf.q = e.target.value.toLowerCase(); renderP(); });
+  function renderP(){
+    var tb = document.getElementById('pqPrio'); tb.textContent = ''; var n = 0;
+    P.prio.forEach(function(r){
+      var lv = LV(r[3]);
+      if (pf.lvl && lv[0] !== pf.lvl) return;
+      if (pf.q && (r[0] + ' ' + r[1]).toLowerCase().indexOf(pf.q) < 0) return;
+      n++;
+      var tr = el('tr'); var th = el('th', '', r[0]); th.scope = 'row'; tr.appendChild(th);
+      tr.appendChild(el('td', '', r[1])); tr.appendChild(el('td', '', r[2]));
+      var tdp = el('td'); tdp.appendChild(el('span', 'lvlp ' + lv[1], lv[0] + ' (' + r[3] + ')')); tr.appendChild(tdp);
+      var tdf = el('td'); r[4].forEach(function(f){ tdf.appendChild(el('span', 'flag', f)); }); tr.appendChild(tdf);
+      tb.appendChild(tr);
+    });
+    document.getElementById('pqPrioCount').textContent = n + (n === 1 ? ' empresa' : ' empresas') + ' na lista.';
+  }
+  renderP();
 })();
 </script>
 <script>
